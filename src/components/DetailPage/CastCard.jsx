@@ -1,6 +1,6 @@
 import React from "react";
 
-function CastCard(img, role, name) {
+function CastCard( role, name) {
     return (<>
         <div className="card d-flex" style={{ width: '8rem' }}>
             {/* <img

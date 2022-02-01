@@ -35,40 +35,40 @@ const Detail = (props) => {
         <>
 
             <h1 className="d-flex justify-content-center">Detail Page</h1>
-           
-                <div className="container">
-                    <div className="row" >
-                        <div className="col-sm-5"  >
-                            <img key={movieData?.id} style={{ width: '18rem' }} src={`https://image.tmdb.org/t/p/w500` + movieData?.poster_path} alt="" /></div>
-                        <div className="col-sm-6" >
-                            <h3 >Movie Name: {movieData?.title}</h3>
-                            <h6>Overview: {movieData?.overview}</h6>
-                            <h6>Movie Released Date:{movieData?.release_date}</h6>
-                            <h6 >Genre:{movieData?.genres.map(item => <span key={item?.id} >{item.name} </span>)}</h6>
-                            <h6>Cast:</h6>
-                            {
-                                movieCrewData?.filter(item => job.includes(item.job.toLowerCase())).map(item => <li key={item}> <strong>{item.job}</strong>: {item.name}</li>)
-                            }
-                        </div>
+
+            <div className="container">
+                <div className="row" >
+                    <div className="col-sm-5"  >
+                        <img key={movieData?.id} style={{ width: '18rem' }} src={`https://image.tmdb.org/t/p/w500` + movieData?.poster_path} alt="" /></div>
+                    <div className="col-sm-6" >
+                        <h3 >Movie Name: {movieData?.title}</h3>
+                        <h6>Overview: {movieData?.overview}</h6>
+                        <h6>Movie Released Date:{movieData?.release_date}</h6>
+                        <h6 >Genre:{movieData?.genres.map(item => <span key={item?.id} >{item.name} </span>)}</h6>
+                        <h6>Cast:</h6>
+                        {
+                            movieCrewData?.filter(item => job.includes(item.job.toLowerCase())).map(item => <li key={item}> <strong>{item.job}</strong>: {item.name}</li>)
+                        }
                     </div>
                 </div>
-          
+            </div>
 
-           <div className="container">
+
+            <div className="container">
                 <h2>Film Cast:</h2>
                 {/* <Slider > */}
-                    {
-                        movieCastData?.map(item =>
+                {
+                    movieCastData?.map(item =>
 
-                            <CastCard name={item.name} role={item.character}> <img key={item.id} width={"100"} height={"150"} src={item.profile_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
+                        <CastCard name={item.name} role={item.character} > <img key={item.id} width={"100"} height={"150"} src={item.profile_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
 
-                                {/* <h6>{item.name}</h6>
+                            {/* <h6>{item.name}</h6>
                                 <h6> {item.character}</h6> */}
 
-                            </CastCard>)
-                    }
+                        </CastCard>)
+                }
                 {/* </Slider> */}
-                </div>
+            </div>
             <div className='review-part'>
                 <Card>    <h5>Reviews:</h5>
                     <p>

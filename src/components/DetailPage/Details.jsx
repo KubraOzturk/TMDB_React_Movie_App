@@ -45,25 +45,30 @@ const Details = (props) => {
                             <h6>Overview: {movieData?.overview}</h6>
                             <h6>Movie Released Date:{movieData?.release_date}</h6>
                             <h6 >Genre:{movieData?.genres.map(item => <span key={item?.id} >{item.name} </span>)}</h6>
-                            <h6>Cast:</h6>
+                            <h6>Crew:</h6>
                             {
                                 movieCrewData?.filter(item => job.includes(item.job.toLowerCase())).map(item => <li key={item}> <strong>{item.job}</strong>: {item.name}</li>)
                             }
                         </div>
                     </div>
                 </div>
+               
                 <h2>Film Cast:</h2>
+                <Slider>
+                <div className="d-flex" style={{ width: '18rem' }}>
                 {
-          movieCastData?.map(item => 
+          movieCastData?.map((item,index) => <div key={index} className="mb-2 ml-2">
             
-          <CastCard > <img key={item} width={"100"} height={"150"} src={item.profile_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
-            <CastCardDescription>
-              <h6>{item.name}</h6>
-              <h6> {item.character}</h6>
-             </CastCardDescription>
-</CastCard>)
-        }  
-           
+          <img key={item} width={"100"} height={"150"} src={item.profile_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
+
+              <h6>Actor Name:{item.name}</h6>
+              <h6>Role: {item.character}</h6>
+        </div>
+
+)
+        } 
+         </div> 
+         </Slider>
         </>
     )
 };
