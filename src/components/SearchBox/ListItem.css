@@ -1,0 +1,38 @@
+.list-item-container {
+    display: flex;
+    padding: 8px;
+    border-bottom: 1px solid #e6e6e6;
+  }
+  .center {
+    flex: 4;
+  }
+  .left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .right {
+    flex: 0.2;
+  }
+  .right p {
+    font-size: 32px;
+    color: #000;
+  }
+  .thumbnail {
+    width: 30px;
+  }
+  p,
+  h4 {
+    margin-block-start: 0px;
+    margin-block-end: 8px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  h4 {
+    font-weight: 600;
+  }
+  
+  p {
+    color: #a1a1a1;
+  }
+  
