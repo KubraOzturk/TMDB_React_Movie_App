@@ -8,11 +8,8 @@ import TopRated from './components/TopRated';
 import Popular from './components/Popular';
 import LoginPage from './components/LoginPage';
 import ErrorPage from './components/ErrorPage';
-import Profile from './components/Profile';
-import DetailPage from './components/DetailPage/DetailPage';
-import Detail from './components/DetailPage/Detail';
+import ProfilePage from './components/ProfilePage';
 import Details from './components/DetailPage/Details';
-
 
 export default function App() {
   const navRoutes = [
@@ -21,10 +18,9 @@ export default function App() {
     { title: 'Popular', path: 'popular', element: <Popular /> },
     { title: 'Login', path: 'login', element: <LoginPage /> },
     { title: 'Error', path: 'loginerror', element: <ErrorPage /> },
-    { title: 'Profile', path: 'profile', element: <Profile /> },
-      { title: 'Detail', path: 'detail/:movieId', element: <Details /> },
-    //  { title: 'Detail', path: 'detail/:movieId', element: <DetailPage /> },
-
+    { title: 'Profile', path: 'profile', element: <ProfilePage /> },
+    { title: 'Detail', path: 'detail/:movieId', element: <Details /> },
+  
   ];
 
   return (

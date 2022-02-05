@@ -5,7 +5,7 @@ import Card from './Card';
 import sliderSettings from "./Slider";
 import Slider from "react-slick";
 import {Link} from "react-router-dom";
-import DetailPage from './DetailPage/DetailPage';
+import ButtonCard from './IconButtons/ButtonCard';
 //import StyledLink from "./StyledLink";
 
 function Discover(props) {
@@ -23,7 +23,6 @@ function Discover(props) {
   }, []);
   
   console.log("data",data.results);
-  const id = 35;
   return (
     <>
       <h1>Discover</h1>
@@ -35,7 +34,8 @@ function Discover(props) {
         data?.results?.map((item,index)=>(
           console.log(item),
           <div key={index} className="col-sm-4 mb-2">
-          <Link to={`/detail/${item.id} `} style={{ color: 'black' }}><Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id}/></Link>
+            <ButtonCard/>
+          <Link to={`/detail/${item.id} `} style={{ color: '#323232',textDecoration: 'none' }}><Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id}/></Link>
          {console.log(img_url+item.poster_path)}
          
         </div>

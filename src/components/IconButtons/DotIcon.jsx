@@ -37,7 +37,7 @@ export default function DotIcon() {
       }}
     >
        <IconButton aria-label="Example" onClick={handleClick}>
-          <FontAwesomeIcon icon={faEllipsisV} />
+          <FontAwesomeIcon icon={faEllipsisV} style={{color:"red"}}/>
         </IconButton>
     </Box>
   );

@@ -4,12 +4,12 @@ const ADD_SAVED="ADD_SAVED";
 const DELETE_SAVED="DELETE_SAVED";
 
 export const addFavorites = (id, title, genre) => ({
-  type: ADD_FAVORITES,
+  type: "ADD_FAVORITES",
   payload: { id, title, genre },
 });
 
 export const deleteFavorites = (id) => ({
-  type: DELETE_FAVORITES,
+  type: "DELETE_FAVORITES",
   payload: id,
 });
 
@@ -18,10 +18,11 @@ export const addSaved = (id, title, genre) => ({
     payload: { id, title, genre },
   });
   
-  export const deleteSaved = (id) => ({
+export const deleteSaved = (id) => ({
     type: DELETE_SAVED,
     payload: id,
   });
+
 const moviesReducer = (
   favorites = { favoriteFilms: [], totalCount: 0 },
   saved={savedFilms:[],totalCount:0 },
@@ -71,8 +72,8 @@ const moviesReducer = (
             return saved;
           }
     default:
-      return {favorites,saved};
+      return {favorites};
   }
 };
 
-export default moviesReducer;
+ export default moviesReducer;

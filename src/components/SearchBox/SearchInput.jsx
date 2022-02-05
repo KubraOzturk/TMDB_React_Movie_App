@@ -1,5 +1,16 @@
 import React from 'react';
-import './SearchInput.css';
+import styled from 'styled-components';
+
+const SearchContainer=styled.div`  
+display: flex;
+justify-content: center;
+margin-bottom: 24px;`
+
+const SearchContainerInput=styled.input`
+height: 32px;
+width: 300px;
+padding: 0px 12px 0px 12px;
+`
 
 const SearchInput = ({ value, onChangeText ,onFormSubmit}) => {
   React.useEffect(() => {
@@ -9,17 +20,19 @@ const SearchInput = ({ value, onChangeText ,onFormSubmit}) => {
   }, []);
 
   return (
-    <div className="search-container">
+    <SearchContainer>
       <form onSubmit={onFormSubmit}>
-      <input
+      <SearchContainerInput
         type="text"
         value={value}
         onChange={onChangeText}
         placeholder="Search movie by name"
       />
       </form>
-    </div>
+      </SearchContainer>
   );
 };
 
 export default SearchInput;
+
+

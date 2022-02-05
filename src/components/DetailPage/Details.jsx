@@ -2,10 +2,12 @@ import { useParams } from "react-router-dom"
 import { useQuery } from 'react-query';
 import { fetchSingleMovie, fetchSingleMovieCredits, fetchReviews, fetchRecommendations } from '../../api';
 import Card from "../Card"
-import CastCard from './CastCard';
+import { Cast, CastDescription } from './CastCard';
 import { useEffect } from "react";
 import { useContext } from "react";
 import Slider from "react-slick";
+import CastSliderSettings from "../CastSliderSettings";
+
 //import { Card } from '@mui/material';
 const Details = (props) => {
     const { movieId } = useParams()
@@ -34,41 +36,60 @@ const Details = (props) => {
     return (
         <>
 
-            <h1 className="d-flex justify-content-center">Detail Page</h1>
-           
-                <div className="container">
-                    <div className="row" >
-                        <div className="col-sm-5"  >
-                            <img key={movieData?.id} style={{ width: '18rem' }} src={`https://image.tmdb.org/t/p/w500` + movieData?.poster_path} alt="" /></div>
-                        <div className="col-sm-6" >
-                            <h3 >Movie Name: {movieData?.title}</h3>
-                            <h6>Overview: {movieData?.overview}</h6>
-                            <h6>Movie Released Date:{movieData?.release_date}</h6>
-                            <h6 >Genre:{movieData?.genres.map(item => <span key={item?.id} >{item.name} </span>)}</h6>
-                            <h6>Crew:</h6>
-                            {
-                                movieCrewData?.filter(item => job.includes(item.job.toLowerCase())).map(item => <li key={item}> <strong>{item.job}</strong>: {item.name}</li>)
-                            }
-                        </div>
+            {/* <h1 className="d-flex justify-content-center">Detail Page</h1> */}
+
+            <div className="container">
+                <div className="row" >
+                    <div className="col-sm-5"  >
+                        <img key={movieData?.id} style={{ width: '18rem' }} src={`https://image.tmdb.org/t/p/w500` + movieData?.poster_path} alt="" /></div>
+                    <div className="col-sm-6" >
+                        <h3 >Movie Name: {movieData?.title}</h3>
+                        <h6>Overview: {movieData?.overview}</h6>
+                        <h6>Movie Released Date:{movieData?.release_date}</h6>
+                        <h6 >Genre:{movieData?.genres.map(item => <span key={item?.id} >{item.name} </span>)}</h6>
+                        <h6>Crew:</h6>
+                        {
+                            movieCrewData?.filter(item => job.includes(item.job.toLowerCase())).map(item => <li key={item}> <strong>{item.job}</strong>: {item.name}</li>)
+                        }
                     </div>
                 </div>
+            </div>
+            <h2 className="my-2">Film Cast:</h2>
+            <div className="row mb-2" style={{ backgroundColor: "#ecf0f1ey" }}>
+                <Slider {...CastSliderSettings}>
+                    {
+                        movieCastData?.map(item =>
+                                <Cast key={item.id}>
+                                    <img className="rounded" key={item} width={"100"} height={"150"} src={item.profile_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : ` https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
+                                    <CastDescription>
+                                        <h6  style={{ color: "#2c3e50" }}>Name:{item.name}</h6>
+                                        <h6  style={{ color: "#2c3e50" }}>Role:{item.character}</h6>
+                                    </CastDescription>
+                                </Cast>
+                        )
+                    }
+                </Slider>
+            </div>
+           <div className="row">
+            <h5>Reviews:</h5>
+            <div className='review-part'>
+                
+                    <div className="col-sm-6">
+                     <p style={{ color: "#8e44ad" }}>
+                         <span>{reviewsData?.results[0]?.author[0].toUpperCase()}</span>
+                         {
+                            reviewsData?.results[0]?.author
+                        }
+                    </p> {
+                        
+                         reviewsData?.results[0]?.content?.slice(0, 300) 
+                       
+                    }..
+               </div>
                
-                <h2>Film Cast:</h2>
-                <Slider>
-                <div className="d-flex" style={{ width: '18rem' }}>
-                {
-          movieCastData?.map((item,index) => <div key={index} className="mb-2 ml-2">
-            
-          <img key={item} width={"100"} height={"150"} src={item.profile_path === null ? `https://tigres.com.tr/wp-content/uploads/2016/11/orionthemes-placeholder-image-1.png` : `https://image.tmdb.org/t/p/w200${item?.profile_path}`} alt="" />
-
-              <h6>Actor Name:{item.name}</h6>
-              <h6>Role: {item.character}</h6>
+           </div>
+           
         </div>
-
-)
-        } 
-         </div> 
-         </Slider>
         </>
     )
 };

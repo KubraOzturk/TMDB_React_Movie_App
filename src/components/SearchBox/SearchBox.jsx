@@ -3,7 +3,6 @@ import React from 'react';
 import ListItem from './ListItem';
 import SearchInput from './SearchInput';
 import debounce from 'lodash.debounce';
-import {Link} from "react-router-dom";
 
 
 const fetchData = async (query, cb) => {
@@ -42,6 +41,7 @@ export default function SearchBox() {
             title={result.title}
             imageUrl={`${img_url}${result.poster_path}`}
             caption={result.release_date}
+            id={result.id}
           />
           
         </div>

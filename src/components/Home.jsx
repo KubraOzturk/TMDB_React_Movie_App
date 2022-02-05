@@ -37,7 +37,7 @@ function Home(props) {
     
     <Discover />
     
-    <div className="b-example-divider mb-2"></div>
+    <div className="b-example-divider my-5"></div>
     <Trending />
   </>)
 }

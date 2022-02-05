@@ -6,11 +6,11 @@ import Popular from './Popular';
 import TopRated from './TopRated';
 import Home from './Home';
 // SLUG
-const navRoutes = [
-  { title: 'Ana Sayfa', path: '/', element: <Home />, isNav: true },
-  { title: 'Top Rated', path: 'toprated', element: <TopRated />, isNav: true },
-  { title: 'Popular', path: 'popular', element: <Popular /> },
-];
+// const navRoutes = [
+//   { title: 'Ana Sayfa', path: '/', element: <Home />, isNav: true },
+//   { title: 'Top Rated', path: 'toprated', element: <TopRated />, isNav: true },
+//   { title: 'Popular', path: 'popular', element: <Popular /> },
+// ];
 function Navbar(props) {
   return (
     <>
@@ -41,10 +41,10 @@ function Navbar(props) {
                   aria-expanded="false"
                 >
                   <img
-                    src="https://github.com/mdo.png"
+                    src="https://github.com/KubraOzturk.png"
                     alt="mdo"
-                    width="32"
-                    height="32"
+                    width="30"
+                    height="30"
                     className="rounded-circle"
                   />
                 </Link>

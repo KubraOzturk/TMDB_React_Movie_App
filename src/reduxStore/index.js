@@ -1,8 +1,10 @@
 import { combineReducers, createStore } from "redux";
-import moviesReducer from "./moviesRedux";
+//import moviesReducer from "./moviesRedux";
+import sortFilterReducer from "./sortFilter";
 
 const rootReducer = combineReducers({
-    loginReducer:moviesReducer,
+    //moviesReducer:moviesReducer,
+    sortFilterReducer:sortFilterReducer,
   });
 
-  //export const store = createStore(moviesReducer);
+  export const store = createStore(rootReducer);
