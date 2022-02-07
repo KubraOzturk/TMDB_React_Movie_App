@@ -30,8 +30,9 @@ function TopRated(props) {
   // }, []);
 
   return (<>
-  <h1>TopRated</h1>
-  <div className="row ">
+  <h1 className='offset-1'>Top Rated Movies</h1>
+  <div className="container-fluid row ">
+  <div className="col-sm-4"><FilterPage/></div>
     <div className='col-sm-8'>
       <Slider {...topratedSliderSettings}>
       {
@@ -51,8 +52,8 @@ function TopRated(props) {
       }
      </Slider>
      </div>
-     <div className="col-sm-4"><FilterPage/></div>
-      </div>
+     
+    </div>
       
   {/* <SortFilter/> */}
   </>);

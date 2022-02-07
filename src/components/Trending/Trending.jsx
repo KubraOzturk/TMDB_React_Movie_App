@@ -8,7 +8,6 @@ import { img_url} from '../../api';
 import Slider from "react-slick";
 import sliderSettings from '../Slider';
 import {Link} from "react-router-dom";
-import ButtonCard from '../IconButtons/ButtonCard';
 
 
 function Trending(props) {
@@ -37,8 +36,8 @@ function Trending(props) {
   }
 
   return (
-    <>
-      <h1>Trending
+    <> <div>
+      <h1 className='offset-1 mb-2'>Trending
         <Box
           sx={{
             display: 'inline',
@@ -50,21 +49,22 @@ function Trending(props) {
             },
           }}
         >
-          <ButtonGroup size="large" aria-label="large button group">
+          <ButtonGroup size="medium" aria-label="medium button group" className='offset-1'>
             <Button key="today" onClick={handleDayButton}>Today</Button>
             <Button key="lastweek" onClick={handleWeekButton}>Last Week</Button>
           </ButtonGroup>
         </Box>
       </h1>
-      <div className="row">
+      </div>
+      <div className="container-fluid row">
       <Slider {...sliderSettings}>
         { 
           data?.results?.map((item, index) => (
             //console.log("dayItem", item),
             <div key={index} className="col-sm-4 mb-2">
-              <ButtonCard/>
+              
               <Link to={`/detail/${item.id} `} style={{ color:'#323232',textDecoration: 'none'}}>
-              <Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} />
+              <Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} className='offset-1'/>
               {console.log(img_url + item.poster_path)}
               </Link>
             </div>

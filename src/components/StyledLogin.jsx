@@ -137,7 +137,7 @@ export const SignButton = styled.button`
   font-size: 14px;
   font-weight: 700;
   color: #fff;
-  background-color: #e5195f;
+  background-color: #ff5e57;
   border: 0;
   border-radius: 35px;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.08);

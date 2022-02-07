@@ -5,7 +5,6 @@ import Trending from './Trending/Trending';
 import LoginPage from './LoginPage';
 import SearchBox from './SearchBox/SearchBox';
 //import SearchBox from './SearchBox/SearchBox';
-
 function Home(props) {
   const [query, setQuery] = useState("");
   const [data,setData]=useState();
@@ -28,11 +27,6 @@ function Home(props) {
   }
 
   return (<>
-    {/* <SearchBox
-      onSubmit={handleSubmit}
-      onChange={handleChange}
-      query={query}
-    /> */}
     <SearchBox/>
     
     <Discover />

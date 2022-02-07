@@ -348,7 +348,7 @@ function FilterPage(props) {
       dataResults.map((item,index)=>(
         console.log(item),
         <div key={index} className="col-sm-4">
-          <ButtonCard/>
+
         <Link to={`/detail/${item.id} `} style={{ color: 'black' }}><Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id}/></Link>
        {console.log(img_url+item.poster_path)}
        

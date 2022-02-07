@@ -14,11 +14,11 @@ const queryClient = new QueryClient();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    {/* <Provider store={store}> */}
+    <Provider store={store}>
     <QueryClientProvider client={queryClient}>
       <App />
       </QueryClientProvider>
-    {/* </Provider> */}
+    </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

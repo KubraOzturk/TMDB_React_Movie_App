@@ -5,8 +5,6 @@ import Card from './Card';
 import sliderSettings from "./Slider";
 import Slider from "react-slick";
 import {Link} from "react-router-dom";
-import ButtonCard from './IconButtons/ButtonCard';
-//import StyledLink from "./StyledLink";
 
 function Discover(props) {
   const [data, setData] = useState([]);
@@ -25,16 +23,16 @@ function Discover(props) {
   console.log("data",data.results);
   return (
     <>
-      <h1>Discover</h1>
+      <h1 className='offset-1'>Discover</h1>
       
-      <div className="row ">
+      <div className="container-fluid row ">
       <Slider {...sliderSettings}>
       {
         
         data?.results?.map((item,index)=>(
           console.log(item),
           <div key={index} className="col-sm-4 mb-2">
-            <ButtonCard/>
+            {/* <ButtonCard/> */}
           <Link to={`/detail/${item.id} `} style={{ color: '#323232',textDecoration: 'none' }}><Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id}/></Link>
          {console.log(img_url+item.poster_path)}
          
@@ -45,17 +43,6 @@ function Discover(props) {
      </Slider>
       </div>
      
-      {/* <div className="row">
-        <div className="col-sm-4 mb-2">
-          <Card imgId={id} />
-        </div>
-        <div className="col-sm-4 mb-2">
-          <Card imgId={id+10} />
-        </div>
-        <div className="col-sm-4 mb-2">
-          <Card imgId={id+23} />
-        </div>
-      </div> */}
     </>
   );
 }
