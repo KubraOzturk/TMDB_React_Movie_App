@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const BASE_API = axios.create({ baseURL: "https://api.themoviedb.org/3/" });
+export const BASE_API = axios.create({ baseURL: "https://api.themoviedb.org/3/" });
 const BASE_AXIOS = axios.create({baseURL: "https://api.themoviedb.org/3%22%7D"});
-const API_KEY="14ccdb96456935bbb41591e99697d262";
+export const API_KEY="14ccdb96456935bbb41591e99697d262";
 export const Popular_URL =
   'https://api.themoviedb.org/3/movie/popular?api_key=14ccdb96456935bbb41591e99697d262&language=en-US&page=1';
 export const Discover_URL =
@@ -63,5 +63,6 @@ BASE_API.get(
 BASE_AXIOS.get(
     `/discover/movie?api_key=${API_KEY}&page=${page}&sort_by=${sortValue}&release_date.lte=${startDate}&release_date.gte=${endDate}&with_genres=${genre}`
   );
-  export const fetchTopRatedPopular = (category, page) =>
+export const fetchTopRatedPopular = (category, page) =>
 BASE_AXIOS.get(`/movie/${category}?api_key=${API_KEY}&page=${page}`);
+

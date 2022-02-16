@@ -34,3 +34,4 @@ const topratedSliderSettings = {
   };
   
   export default topratedSliderSettings;
+  

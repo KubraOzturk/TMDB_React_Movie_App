@@ -8,8 +8,9 @@ function Card({img,releaseDate,title,id}) {
   return (
     <>
       {/* <div className="card" style={{ width: '17rem',backgroundColor:"#ecf0f1" }}> */}
+      {/* <ButtonCard id={id}/> */}
        <StyledCard>
-        <ButtonCard/>
+        
         <img
           src={`${img}`}
           className="card-img-top"

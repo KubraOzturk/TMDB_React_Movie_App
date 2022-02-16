@@ -8,6 +8,7 @@ import { img_url} from '../../api';
 import Slider from "react-slick";
 import sliderSettings from '../Slider';
 import {Link} from "react-router-dom";
+import ButtonCard from '../IconButtons/ButtonCard';
 
 
 function Trending(props) {
@@ -62,7 +63,7 @@ function Trending(props) {
           data?.results?.map((item, index) => (
             //console.log("dayItem", item),
             <div key={index} className="col-sm-4 mb-2">
-              
+              <ButtonCard/>
               <Link to={`/detail/${item.id} `} style={{ color:'#323232',textDecoration: 'none'}}>
               <Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} className='offset-1'/>
               {console.log(img_url + item.poster_path)}

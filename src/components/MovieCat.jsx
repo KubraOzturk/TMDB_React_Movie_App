@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from 'react';
 //import FilterPage from './SortFilter/FilterPage';
 import SortFilter from './SortFilter/SortFilter';
-import {API_KEY, BASE_API, fetchTopRatedMovies,img_url} from "../api";
+import {fetchTopRatedMovies,img_url,API_KEY,BASE_API} from "../api";
 import Card from './Card';
 import sliderSettings from "./Slider";
 import Slider from "react-slick";
@@ -9,53 +9,38 @@ import {Link} from "react-router-dom";
 import ButtonCard from './IconButtons/ButtonCard';
 import FilterPage from './SortFilter/FilterPage';
 import topratedSliderSettings from './TopratedSliderSettings';
-import { Button, Grid } from '@mui/material';
+import { Button } from '@mui/material';
 import styled from 'styled-components';
 
-function TopRated(props) {
+function MovieCat(props) {
   const [page, setPage] = useState(1);
   const [data,setData]=useState([]);
   const [filteredData,setFilteredData]=useState(data);
   const [genreId,setGenreId]=useState();
 
-  // useEffect(()=>{
-  //   fetchTopRatedMovies(page).then((response)=>{
-  //   const movies = response.data.results;
-  //   const subData = [];
-  //   subData.push(...data);
-  //   subData.push(...movies);
-  //   setData(subData);
-  //   console.log(response)
-  //   });
-  // },[]);
  
-  const fetchLoadMore = async (page) => await BASE_API.get(`/movie/popular?api_key=${API_KEY}&page=${page}&with_genres=${genreId}`).then((response) => {
-    const movies = response.data.results;
-    const subData = [];
-    subData.push(...data);
-    subData.push(...movies);
-    setData(subData);
-  });
+
+  useEffect(()=>{
+    fetchTopRatedMovies(page).then((response)=>{
+      console.log(response),
+      setData(response.data);
+      setFilteredData(data);
+    });
+  },[]);
+
+  useEffect(()=>{
+    fetchTopRatedMovies(page).then((response)=>{
+      console.log(response),
+      setData(...data,response.data);
+    });
+  },[page])
 
   useEffect(() => {
-    fetchLoadMore(page);
-    console.log(page);
-    console.log(data);
-  }, [page]);
-
-  // useEffect(()=>{
-  //   fetchTopRatedMovies(page).then((response)=>{
-  //     console.log(response),
-  //     setData(...data,response.data);
-  //   });
-  // },[page])
-
-  // useEffect(() => {
-  //   fetchGenres().then((response) => {
-  //     setGenreId(response.data.genres);
-  //   });
-  //   //getPopularData();
-  // }, []);
+    fetchGenres().then((response) => {
+      setGenreId(response.data.genres);
+    });
+    //getPopularData();
+  }, []);
 
   return (<>
   <h1 className='offset-1'>Top Rated Movies</h1>
@@ -63,19 +48,19 @@ function TopRated(props) {
   <div className="col-sm-4"><FilterPage/></div>
     <div className='col-sm-8'>
       {/* <Slider {...topratedSliderSettings}> */}
-      <div className="container d-flex flex-wrap allign-item-space-between">
+      <div className="container d-flex flex-wrap">
       {
         
-        data?.map((item,index)=>(
+        data?.results?.map((item,index)=>(
           console.log(item),
-          <Grid style={{justifyContent:"space-around"}} >
+          <div key={index} className="col-sm-4 mb-2 ">
           <Link to={`/detail/${item.id} `} style={{ color: '#323232',textDecoration: 'none' }}>
-            <ButtonCard style={{width:"13rem"}}/>
-            <Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id} style={{width:"13rem",marginRight:"2%"}}/>
+            <ButtonCard/>
+            <Card img={`${img_url}${item.poster_path}`} title={item.title} releaseDate={item.release_date} id={item.id}/>
           </Link>
          {console.log(img_url+item.poster_path)}
          
-        </Grid>
+        </div>
          
         ))
       }
@@ -90,13 +75,12 @@ function TopRated(props) {
   </>);
 }
 
-export default TopRated;
+export default <MovieCat></MovieCat>;
 
  const LoadButton = styled.button`
   display: block;
   width: 100%;
   padding: 12px 0;
-  margin-left:
   font-family: inherit;
   font-size: 14px;
   font-weight: 700;
@@ -113,14 +97,3 @@ export default TopRated;
     transform: translate(0, -5px);
   }
 `;
-
-// const MovieCard=styled(Card)`
-// background-color:#ecf0f1;
-// width:11rem;
-// cursor: pointer;
-// &:hover {
-// transform: scale(1.00);
-// transition: all 600ms;
-// z-index: 99;
-// }
-// `
