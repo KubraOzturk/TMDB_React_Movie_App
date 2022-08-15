@@ -1,4 +1,4 @@
-# TMDB_UP_School
+# TMDB_UP_School React Movie App
 This is a movie app with using The Movie Database. Building with ReactJS.
 <h4>Used Technologies</h4>
 <li>React</li>
